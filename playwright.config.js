@@ -5,7 +5,9 @@ const { defineConfig, devices } = require('@playwright/test');
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.ENV} || 'stage'`
+});
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -37,8 +39,8 @@ module.exports = defineConfig({
     //   password: 'welcome2qauto'
     // },
     httpCredentials: {
-      username: process.env.USERNAME,
-      password: process.env.PASSWORD
+      username: 'process.env.USERNAME',
+      password: 'process.env.PASSWORD'
     },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -60,8 +62,8 @@ module.exports = defineConfig({
       // },
       baseURL: process.env.BASE_URL,
       httpCredentials: {
-        username: process.env.USERNAME,
-        password: process.env.PASSWORD
+        username: 'process.env.USERNAME',
+        password: 'process.env.PASSWORD'
       },
       viewport: { width: 1280, height: 720 },
       testMatch: '**/tests/hillel-garage/**/*.spec.js',
