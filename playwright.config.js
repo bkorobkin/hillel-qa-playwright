@@ -11,10 +11,10 @@ const { defineConfig, devices } = require('@playwright/test');
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
+  // testDir: './tests',
   timeout: 30000,
-  
   /* Run tests in files in parallel */
+  testMatch: 'tests/hillel-garage/**.spec.js',
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -30,7 +30,7 @@ module.exports = defineConfig({
     baseURL: 'https://qauto2.forstudy.space/',
     //headless: true,
     viewport: { width: 1280, height: 720 },
-    actionTimeout: 10000,
+    actionTimeout: 5000,
     ignoreHTTPSErrors: true,
     httpCredentials: {
       username: 'guest',
@@ -39,24 +39,58 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    launchOptions: {
+      slowMo: 2000,
+    }
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'hillel-garage',
+      use: { ...devices['Desktop Chrome'],
+      baseURL: 'https://qauto2.forstudy.space/',
+      httpCredentials: {
+        username: 'guest',
+        password: 'welcome2qauto'
+      },
+      viewport: { width: 1280, height: 720 },
+      testMatch: '**/tests/hillel-garage/**/*.spec.js',
     },
+    // dependencies: ['setup']
+  },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+//   {
+//     name: 'prod',
+//     use: { ...devices['Desktop Firefox'],
+//     baseURL: 'https://qauto2.heillel.com',
+//     httpCredentials: {
+//       username: 'guest',
+//       password: 'welcome2qauto'
+//     },
+//     retries:2,
+//   },
+//   dependencies: ['setup']
+// },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+// {
+//   name: 'setup',
+//   testMatch: 'tests/setup/*.spec.js',
+// },
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
+
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
@@ -69,14 +103,14 @@ module.exports = defineConfig({
     // },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+  //   {
+  //     name: 'Microsoft Edge',
+  //     use: { ...devices['Desktop Edge'], channel: 'msedge' },
+  //   },
+  //   {
+  //     name: 'Google Chrome',
+  //     use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+  //   },
   ],
 
   /* Run your local dev server before starting the tests */
