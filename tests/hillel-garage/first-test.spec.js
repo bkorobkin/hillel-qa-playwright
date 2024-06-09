@@ -21,6 +21,9 @@ test.describe('First test', () => {
         await expect (sighInButtonModal).toBeDisabled();
         await expect(modalSignIn.locator('.invalid-feedback')).toHaveText('Email is incorrect');
         await expect(emailInput).toHaveCSS('border-color', 'rgb(220, 53, 69)');
+        await expect(emailInput).toHaveScreenshot('invalid-email-input.png', {
+            maxDiffPixelRatio: 0.2,
+        });
 
     })
 });
