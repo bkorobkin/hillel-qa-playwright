@@ -5,8 +5,7 @@ const { defineConfig, devices } = require('@playwright/test');
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
-
+require('dotenv').config();
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -27,14 +26,19 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://qauto2.forstudy.space/',
+    // baseURL: 'https://qauto2.forstudy.space/',
+    baseURL: process.env.BASE_URL,
     //headless: true,
     viewport: { width: 1280, height: 720 },
     actionTimeout: 5000,
     ignoreHTTPSErrors: true,
+    // httpCredentials: {
+    //   username: 'guest',
+    //   password: 'welcome2qauto'
+    // },
     httpCredentials: {
-      username: 'guest',
-      password: 'welcome2qauto'
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD
     },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -49,10 +53,15 @@ module.exports = defineConfig({
     {
       name: 'hillel-garage',
       use: { ...devices['Desktop Chrome'],
-      baseURL: 'https://qauto2.forstudy.space/',
+      // baseURL: 'https://qauto2.forstudy.space/',
+      // httpCredentials: {
+      //   username: 'guest',
+      //   password: 'welcome2qauto'
+      // },
+      baseURL: process.env.BASE_URL,
       httpCredentials: {
-        username: 'guest',
-        password: 'welcome2qauto'
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD
       },
       viewport: { width: 1280, height: 720 },
       testMatch: '**/tests/hillel-garage/**/*.spec.js',
