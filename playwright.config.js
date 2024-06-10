@@ -39,8 +39,8 @@ module.exports = defineConfig({
     //   password: 'welcome2qauto'
     // },
     httpCredentials: {
-      username: 'process.env.USERNAME',
-      password: 'process.env.PASSWORD'
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD
     },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -60,11 +60,11 @@ module.exports = defineConfig({
       //   username: 'guest',
       //   password: 'welcome2qauto'
       // },
-      baseURL: process.env.BASE_URL,
-      httpCredentials: {
-        username: 'process.env.USERNAME',
-        password: 'process.env.PASSWORD'
-      },
+      // baseURL: process.env.BASE_URL,
+      // httpCredentials: {
+      //   username: 'process.env.USERNAME',
+      //   password: 'process.env.PASSWORD'
+      // },
       viewport: { width: 1280, height: 720 },
       testMatch: '**/tests/hillel-garage/**/*.spec.js',
     },
