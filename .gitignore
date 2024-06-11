@@ -6,3 +6,5 @@ package-lock.json
 /playwright/.cache/
 
 someNotesFromCypress.js
+
+.env
