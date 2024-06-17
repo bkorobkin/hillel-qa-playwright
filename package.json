@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Automation QA Hillel's course 05/2024 - Playwright part",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
