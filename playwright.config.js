@@ -60,57 +60,27 @@ module.exports = defineConfig({
     // dependencies: ['setup']
   },
 
-//   {
-//     name: 'prod',
-//     use: { ...devices['Desktop Firefox'],
-//     baseURL: 'https://qauto2.heillel.com',
-//     httpCredentials: {
-//       username: 'guest',
-//       password: 'welcome2qauto'
-//     },
-//     retries:2,
-//   },
-//   dependencies: ['setup']
-// },
-
-// {
-//   name: 'setup',
-//   testMatch: 'tests/setup/*.spec.js',
-// },
+    {
+      name: 'setup',
+      testMatch: 'tests/setup/*.spec.js',
+    },
+    {
+      name: 'hillel-garage',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup']
+    },
     // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
+    //   name: 'prod',
+    //   use: { ...devices['Desktop Firefox'],
+    //   baseURL: 'https://qauto2.heillel.com',
+    //   httpCredentials: {
+    //     username: 'guest',
+    //     password: 'welcome2qauto'
+    //   },
+    //   retries:2,
     // },
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
+    // dependencies: ['setup']
     // },
-
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-  //   {
-  //     name: 'Microsoft Edge',
-  //     use: { ...devices['Desktop Edge'], channel: 'msedge' },
-  //   },
-  //   {
-  //     name: 'Google Chrome',
-  //     use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-  //   },
   ],
 
   /* Run your local dev server before starting the tests */
@@ -120,4 +90,3 @@ module.exports = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
