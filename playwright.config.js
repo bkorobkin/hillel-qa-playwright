@@ -103,6 +103,16 @@ module.exports = defineConfig({
     // },
 
     /* Test against branded browsers. */
+<<<<<<< HEAD
+    {
+      name: 'Microsoft Edge',
+      use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    },
+    {
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    },
+=======
   //   {
   //     name: 'Microsoft Edge',
   //     use: { ...devices['Desktop Edge'], channel: 'msedge' },
@@ -111,6 +121,7 @@ module.exports = defineConfig({
   //     name: 'Google Chrome',
   //     use: { ...devices['Desktop Chrome'], channel: 'chrome' },
   //   },
+>>>>>>> 65dadcea8b2b5da91cd045c2b8bad2cb289e872c
   ],
 
   /* Run your local dev server before starting the tests */
