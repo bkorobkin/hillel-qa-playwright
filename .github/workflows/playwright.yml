@@ -32,5 +32,5 @@ jobs:
           docker run --rm \
             -v $(pwd):/work \
             -w /work \
-            mcr.microsoft.com/playwright:v1.39.0-jammy \
+            playwright/chrome:playwright-1.45.0 \
             /bin/bash -c "npx playwright install-deps && npx playwright test"
