@@ -5,9 +5,9 @@ const { defineConfig, devices } = require('@playwright/test');
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-require('dotenv').config({
-  path: `.env.${process.env.ENV} || 'stage'`
-});
+// require('dotenv').config({
+//   path: `.env.${process.env.ENV} || 'stage'`
+// });
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -55,32 +55,27 @@ module.exports = defineConfig({
     {
       name: 'hillel-garage',
       use: { ...devices['Desktop Chrome'],
-      // baseURL: 'https://qauto2.forstudy.space/',
-      // httpCredentials: {
-      //   username: 'guest',
-      //   password: 'welcome2qauto'
-      // },
-      // baseURL: process.env.BASE_URL,
-      // httpCredentials: {
-      //   username: 'process.env.USERNAME',
-      //   password: 'process.env.PASSWORD'
-      // },
+      baseURL: 'https://qauto2.forstudy.space/',
+      httpCredentials: {
+        username: 'guest',
+        password: 'welcome2qauto'
+      },
       viewport: { width: 1280, height: 720 },
       testMatch: '**/tests/hillel-garage/**/*.spec.js',
     },
     // dependencies: ['setup']
-  },
+  // },
 
-    {
-      name: 'setup',
-      testMatch: 'tests/setup/*.spec.js',
-    },
-    {
-      name: 'hillel-garage',
-      use: { ...devices['Desktop Chrome'] },
-      dependencies: ['setup']
-    },
-    // {
+  //   {
+  //     name: 'setup',
+  //     testMatch: 'tests/setup/*.spec.js',
+  //   },
+  //   {
+  //     name: 'hillel-garage',
+  //     use: { ...devices['Desktop Chrome'] },
+  //     dependencies: ['setup']
+  //   },
+  //   // {
     //   name: 'prod',
     //   use: { ...devices['Desktop Firefox'],
     //   baseURL: 'https://qauto2.heillel.com',
@@ -91,7 +86,7 @@ module.exports = defineConfig({
     //   retries:2,
     // },
     // dependencies: ['setup']
-    // },
+    },
   ],
 
   /* Run your local dev server before starting the tests */
